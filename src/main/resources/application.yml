@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/pokemondb}
+    # url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:Exito2025!}
+  jpa:
+    hibernate:
+      ddl-auto: validate   # usamos Flyway para crear/sembrar
+    open-in-view: true
+    properties:
+      hibernate.format_sql: true
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+# Swagger UI: http://localhost:8080/swagger-ui/index.html
