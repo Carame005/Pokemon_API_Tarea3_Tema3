@@ -3,10 +3,9 @@ server:
 
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/pokemondb}
-    # url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME:postgres}
-    password: ${SPRING_DATASOURCE_PASSWORD:Exito2025!}
+    url: jdbc:postgresql://dpg-d4dkp1jipnbc73a4mml0-a.frankfurt-postgres.render.com:5432/pokemondb_6ha6
+    username: pokemondb_6ha6_user
+    password: LzkD6M4Dwbc5lILrLAzlukApyeXb56RX
   jpa:
     hibernate:
       ddl-auto: validate   # usamos Flyway para crear/sembrar
@@ -21,5 +20,3 @@ management:
     web:
       exposure:
         include: health,info
-
-# Swagger UI: http://localhost:8080/swagger-ui/index.html
