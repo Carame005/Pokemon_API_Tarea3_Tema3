@@ -1,14 +1,15 @@
-# Imagen base
-FROM eclipse-temurin:21-jdk
-
-# Directorio de la app dentro del contenedor
+# Etapa 1: Construcción con Gradle
+FROM gradle:8.7-jdk21 AS builder
 WORKDIR /app
 
-# Copiar el JAR generado por Gradle
-COPY build/libs/pokemon-api-0.0.1-SNAPSHOT.jar app.jar
+COPY . .
+RUN gradle build -x test
 
-# Exponer el puerto que usa Spring Boot
+# Etapa 2: Imagen final ligera
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+
+COPY --from=builder /app/build/libs/*SNAPSHOT.jar app.jar
+
 EXPOSE 8080
-
-# Comando para ejecutar la app
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
