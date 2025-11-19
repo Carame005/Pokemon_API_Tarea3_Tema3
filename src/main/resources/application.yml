@@ -1,8 +1,5 @@
 server:
-  port: ${PORT}
-
-
-
+  port: ${PORT:8080}  # usa el puerto de la variable PORT, si no existe, por defecto 8080
 
 spring:
   datasource:
