@@ -1,11 +1,11 @@
 server:
-  port: ${PORT:8080}  # usa el puerto de la variable PORT, si no existe, por defecto 8080
+  port: ${PORT:8080}  # Spring Boot usará la variable PORT de Render, por defecto 8080 en local
 
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d4dkp1jipnbc73a4mml0-a.frankfurt-postgres.render.com:5432/pokemondb_6ha6
-    username: pokemondb_6ha6_user
-    password: LzkD6M4Dwbc5lILrLAzlukApyeXb56RX
+    url: ${SPRING_DATASOURCE_URL}          # Inyectada desde Render
+    username: ${SPRING_DATASOURCE_USERNAME} # Inyectada desde Render
+    password: ${SPRING_DATASOURCE_PASSWORD} # Inyectada desde Render
   jpa:
     hibernate:
       ddl-auto: validate   # usamos Flyway para crear/sembrar
