@@ -4,12 +4,20 @@ server:
 
 spring:
   datasource:
-    url: ${POSTGRES_URL}
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate.format_sql: true
   flyway:
     enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
