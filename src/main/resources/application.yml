@@ -1,22 +1,11 @@
-server:
-  port: ${PORT:8080}
-
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL}          # Inyectada desde Render
-    username: ${SPRING_DATASOURCE_USERNAME} # Inyectada desde Render
-    password: ${SPRING_DATASOURCE_PASSWORD} # Inyectada desde Render
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: validate   # usamos Flyway para crear/sembrar
-    open-in-view: true
-    properties:
-      hibernate.format_sql: true
+      ddl-auto: validate
+    show-sql: true
   flyway:
     enabled: true
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
