@@ -1,6 +1,3 @@
-server:
-  port: 8080  # Spring Boot usará la variable PORT de Render, por defecto 8080 en local
-
 spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL}          # Inyectada desde Render
