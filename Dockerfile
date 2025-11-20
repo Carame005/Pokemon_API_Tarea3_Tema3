@@ -10,4 +10,4 @@ WORKDIR /app
 
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-CMD ["sh", "-c", "java -Dserver.address=0.0.0.0 -Dserver.port=$PORT -jar /app/app.jar"]
+CMD ["sh", "-c", "java -Dserver.address=0.0.0.0 -Dserver.port=${PORT:-8080} -jar /app/app.jar"]
